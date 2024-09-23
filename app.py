@@ -56,7 +56,9 @@ def calculate_total_spending_over_period_with_time_checks(df_raw, time_points):
             print(f"Active calls on {day} at {time_point}: {active_calls_at_time_point}")
             # Add n * n * VARIABLE_COST at the specified time point
             total_spending += active_calls_at_time_point * active_calls_at_time_point * VARIABLE_COST
-    return total_spending
+    min_data = df['Data'].min()
+    max_data = df['Data'].max()
+    return total_spending, min_data, max_data
 
 time_options = ['09:00:00', '09:30:00', '10:00:00', '10:30:00', '11:00:00', '11:30:00', '12:00:00', '12:30:00', '13:00:00', '13:30:00', '14:00:00', '14:30:00', '15:00:00', '15:30:00', '16:00:00', '16:30:00', '17:00:00', '17:30:00', '18:00:00', '18:30:00', '19:00:00', '19:30:00', '20:00:00', '20:30:00', '21:00:00', '21:30:00', '22:00:00', '22:30:00', '23:00:00', '23:30:00']
 
@@ -67,6 +69,5 @@ time_points = st.multiselect('Update Times', time_options)
 if st.button('Calculate'):
     st.write('Calculating...')
     df = pd.read_excel(file)
-    total_spending = calculate_total_spending_over_period_with_time_checks(df, time_points)
-    st.write(f"Total spending for the period: €{total_spending:.2f}")
-
+    total_spending, min_data, max_data = calculate_total_spending_over_period_with_time_checks(df, time_points)
+    st.write(f"Total spending between {min_data} and {max_data}: €{total_spending:.2f}")
