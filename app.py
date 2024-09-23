@@ -68,7 +68,5 @@ if st.button('Calculate'):
     st.write('Calculating...')
     df = pd.read_excel(file)
     total_spending = calculate_total_spending_over_period_with_time_checks(df, time_points)
-    st.write(f"Total spending for the 2-month period: €{total_spending:.2f}")
+    st.write(f"Total spending for the period: €{total_spending:.2f}")
 
-
-# can I run on 1 core 1GB? <<<<
