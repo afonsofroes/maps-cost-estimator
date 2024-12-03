@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+/* Apply Poppins font to all elements */
+* {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Style headers */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600 !important;
+}
+
+/* Style code blocks differently to maintain readability */
+.stCode {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Custom button styles */
+.stButton > button {
+    background-color: #feb031 !important;
+    color: white !important;
+    border-radius: 4px !important;
+    padding: 8px 16px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.stButton > button:hover {
+    color: white !important;
+    border-color: white !important;
+}
+
+/* Style checkbox */
+div[data-testid="stCheckbox"] label span {
+    border-color: #feb031 !important;
+}
