@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 
+from apply_styling import load_css
+
+load_css()
 st.title('Traffic Update Cost Calculator')
 
 file = st.file_uploader('Upload an Excel file', type=['xls'])
@@ -37,13 +40,15 @@ def calculate_total_spending_over_period_with_time_checks(df_raw, time_points):
         current_time = row['FullDataPedido']
 
         # Count the number of active calls at the moment this call is received
-        active_calls = df[(df['FullDataPedido'] <= current_time) & (df['FullDataChegMedico'] > current_time)].shape[0]
+        active_calls = df[(df['FullDataPedido'] <= current_time) & (df['FullDataChegMedico'] > current_time)]
+        num_active_calls = active_calls.shape[0]
 
         # Add the fixed cost for the new call
         total_spending += FIXED_COST
 
         # Add the variable cost for each active call (including the new one)
         total_spending += active_calls * VARIABLE_COST
+        # active_doctors = num_active_calls.nunique()
 
     # Now apply the additional costs at the specified time points
     for time_point in time_points:
