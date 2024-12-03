@@ -47,7 +47,7 @@ def calculate_total_spending_over_period_with_time_checks(df_raw, time_points):
         total_spending += FIXED_COST
 
         # Add the variable cost for each active call (including the new one)
-        total_spending += active_calls * VARIABLE_COST
+        total_spending += num_active_calls * VARIABLE_COST
         # active_doctors = num_active_calls.nunique()
 
     # Now apply the additional costs at the specified time points
